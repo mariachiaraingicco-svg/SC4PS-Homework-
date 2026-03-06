@@ -18,7 +18,7 @@ https://cloudveneto.ict.unipd.it/dashboard
 Move the key to a safe location and set the correct permissions:
 
 ```bash
-chmod 600 Ingicco_Key.pem
+chmod 600 my_key.pem
 ```
 
 ## 3. Launch a Linux Virtual Machine
@@ -52,7 +52,7 @@ ssh username@gate.cloudveneto.it
 From your local computer:
 
 ```bash
-scp Ingicco_Key.pem username@gate.cloudveneto.it:~
+scp my_key.pem username@gate.cloudveneto.it:~
 ```
 
 Then organize the key:
