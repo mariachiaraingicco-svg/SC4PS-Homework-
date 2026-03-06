@@ -92,6 +92,7 @@ gcc --version
 Create a simple C program:
 
 ```bash
+sudo dnf install nano
 nano hello.c
 ```
 
