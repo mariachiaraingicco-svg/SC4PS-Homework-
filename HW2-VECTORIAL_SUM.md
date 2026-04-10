@@ -60,8 +60,11 @@ if (fabs(result - expected) < 1e-10) // OK
 ```
 
 ## Output Example
+
 Expected value: 7.3999999999999995
+
 All 1000000 elements are equal to 7.3999999999999995
+
 First 5 elements: 7.3999999999999995 7.3999999999999995 7.3999999999999995 ...
 
 ## Key Points
