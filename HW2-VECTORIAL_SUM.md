@@ -118,6 +118,6 @@ Actual result:
 This happens because decimal numbers cannot be represented exactly in binary floating-point format.
 
 ## Large N values (N = 10^8)
-For N = 10^8, the program needs about 2.4 GB of memory. 
+For N = 10^8, the program needs about 2.4 GB of RAM (3 arrays × 10^8 elements × 8 bytes)
 - **Solution**: Used dynamic memory allocation with `malloc()`
 - Static arrays would cause stack overflow
