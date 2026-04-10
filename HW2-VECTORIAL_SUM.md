@@ -93,12 +93,6 @@ Run the program and enter the requested values:
 ```bash
 ./vector_sum
 ```
-Ecample input: 
-```
-Enter the value of a: 3
-Enter the value of x: 1
-Enter the value of y: 4
-```
 ## Tests performed 
 - N = 10
 - N = 1000000
@@ -110,12 +104,15 @@ Test case:
 - x = 0.1
 - y = 7.1
 
-Expected mathematical result: 7.4
+Expected mathematical result: 
+```
+7.40000000000000000
+```
 Actual result:
 ```
 7.39999999999999947
 ```
-This happens because decimal numbers cannot be represented exactly in binary floating-point format.
+This happens because decimal numbers cannot be represented exactly in binary floating-point format. This demonstrates the importance of using tolerance-based comparisons for floating-point equality checks.
 
 ## Large N values (N = 10^8)
 For N = 10^8, the program needs about 2.4 GB of RAM (3 arrays × 10^8 elements × 8 bytes)
