@@ -113,7 +113,7 @@ Test case:
 Expected mathematical result: 7.4
 Actual result:
 ```
-7.3999999999999995
+7.39999999999999947
 ```
 This happens because decimal numbers cannot be represented exactly in binary floating-point format.
 
