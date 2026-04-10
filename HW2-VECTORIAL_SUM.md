@@ -74,6 +74,23 @@ int main() {
         }
         printf("\n");
 
+        //expected value
+        double expected = a * x + y;
+        int all_correct = 1;
+
+        for(int j = 0; j < n; j++) {
+            if (d_vec[j] != expected) {
+                all_correct = 0;
+                break;
+            }    
+        }
+
+        if (all_correct) {
+            printf("All elements are correct\n");
+        } else {
+            printf("Error: some elements are NOT correct\n");
+        }
+        
         free(x_vec);
         free(y_vec);
         free(d_vec);
