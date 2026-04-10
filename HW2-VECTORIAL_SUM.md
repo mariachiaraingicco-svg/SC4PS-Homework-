@@ -21,9 +21,13 @@ Run the program and enter the requested values:
 ```
 
 Example input: 
+
 Enter the value of a: 3
+
 Enter the value of x: 0.1
+
 Enter the value of y: 7.1
+
 Enter the dimension N: 1000000
 
 ## Tests Required
