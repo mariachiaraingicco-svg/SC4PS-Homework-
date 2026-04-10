@@ -70,7 +70,7 @@ int main() {
 
         printf("The first 5 elements of d are: ");
         for(int j = 0; j < (n < 5 ? n : 5); j++) {
-            printf("%lf ", d_vec[j]);
+            printf("%.17lf\n", d_vec[j]);
         }
         printf("\n");
 
@@ -81,3 +81,38 @@ int main() {
 
     return 0;
 }
+```
+
+## Compilation
+```bash
+gcc -o vector_sum vector_sum.c -lm
+```
+
+## Usage
+Run the program and enter the requested values:
+```bash
+./vector_sum
+```
+Ecample input: 
+```
+Enter the value of a: 3
+Enter the value of x: 1
+Enter the value of y: 4
+```
+## Tests performed 
+- N = 10
+- N = 1000000
+- N = 10000000
+
+## Floating-Point Precision
+Test case:
+- a = 3
+- x = 0.1
+- y = 7.1
+
+Expected mathematical result: 7.4
+Actual result:
+```
+7.3999999999999995
+```
+This happens because decimal numbers cannot be represented exactly in binary floating-point format.
