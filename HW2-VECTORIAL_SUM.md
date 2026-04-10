@@ -1,73 +1,83 @@
 # Homework 02 - Vector Summation
 
 ## Exercise
-Implement the vector operation: 
-**d = ax + y**
+
+Implement the vector operation:
+
+d = a x + y
+
 where:
 - `a` is a scalar
 - `x`, `y`, `d` are vectors of dimension N
-- All elements of x have the same value
-- All elements of y have the same value
+- All elements of `x` have the same value
+- All elements of `y` have the same value
 
-## Compilation
-```bash
-gcc -o vector_sum vector_sum.c -lm
-```
+---
 
-## Usage
-Run the program and enter the requested values:
-```bash
-./vector_sum
-```
+## Implementation
 
-Example input: 
+The program:
+- reads input values for `a`, `x`, and `y`
+- allocates memory dynamically for vectors
+- initializes vectors `x` and `y`
+- computes the result vector `d`
+- prints a subset of results for verification
 
-Enter the value of a: 3
+---
 
-Enter the value of x: 0.1
+## Code
 
-Enter the value of y: 7.1
-
-Enter the dimension N: 1000000
-
-## Tests Required
-Test with:
-- N = 10
-- N = 10^6 (1000000)
-- N = 10^8 (100000000)
-
-Special test case:
-- a = 3, x = 0.1, y = 7.1
-- Expected: 7.4
-
-## Problems Found
-
-### 1. Large N values (N = 10^8)
-For N = 10^8, the program needs about 2.4 GB of memory. 
-- **Solution**: Used dynamic memory allocation with `malloc()`
-- Static arrays would cause stack overflow
-
-### 2. Floating-point precision (a=3, x=0.1, y=7.1)
-The test with a=3, x=0.1, y=7.1 does NOT give exactly 7.4!
-
-**Result**: 7.399999999999999...
-
-**Why?** Decimal numbers like 0.1 and 7.1 cannot be represented exactly in binary floating-point format. This causes small rounding errors.
-
-**Lesson learned**: Never use `==` to compare floating-point numbers. Use a tolerance instead:
 ```c
-if (fabs(result - expected) < 1e-10) // OK
-```
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
-## Output Example
+int main() {
 
-Expected value: 7.3999999999999995
+    int N[] = {10, 1000000, 100000000};
+    int num_tests = 3;
 
-All 1000000 elements are equal to 7.3999999999999995
+    double a, x, y;
 
-First 5 elements: 7.3999999999999995 7.3999999999999995 7.3999999999999995 ...
+    printf("In the vector sum d = ax + y\n");
 
-## Key Points
-- Used `double` instead of `int` for decimal values
-- Used `malloc()` for large arrays
-- Discovered floating-point representation issues
+    printf("- enter the value of a: ");
+    scanf("%lf", &a);
+
+    printf("- enter the value of x: ");
+    scanf("%lf", &x);
+
+    printf("- enter the value of y: ");
+    scanf("%lf", &y);
+
+    for(int i = 0; i < num_tests; i++) {
+
+        int n = N[i];
+        printf("\n=== Testing with N = %d ===\n", n);
+
+        double *x_vec = malloc(n * sizeof(double));
+        double *y_vec = malloc(n * sizeof(double));
+        double *d_vec = malloc(n * sizeof(double));
+
+        for(int j = 0; j < n; j++) {
+            x_vec[j] = x;
+            y_vec[j] = y;
+        }
+
+        for(int j = 0; j < n; j++) {
+            d_vec[j] = a * x_vec[j] + y_vec[j];
+        }
+
+        printf("The first 5 elements of d are: ");
+        for(int j = 0; j < (n < 5 ? n : 5); j++) {
+            printf("%lf ", d_vec[j]);
+        }
+        printf("\n");
+
+        free(x_vec);
+        free(y_vec);
+        free(d_vec);
+    }
+
+    return 0;
+}
