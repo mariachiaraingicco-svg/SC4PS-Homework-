@@ -116,3 +116,8 @@ Actual result:
 7.3999999999999995
 ```
 This happens because decimal numbers cannot be represented exactly in binary floating-point format.
+
+## Large N values (N = 10^8)
+For N = 10^8, the program needs about 2.4 GB of memory. 
+- **Solution**: Used dynamic memory allocation with `malloc()`
+- Static arrays would cause stack overflow
