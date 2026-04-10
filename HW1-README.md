@@ -89,7 +89,7 @@ gcc --version
 
 ## 8. Compile and Run a C Program
 
-Create a simple C program:
+We can create a simple C program through **nano** terminal text editor
 
 ```bash
 sudo dnf install nano
