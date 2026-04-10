@@ -129,7 +129,11 @@ Actual result:
 ```
 7.39999999999999947
 ```
-This happens because decimal numbers cannot be represented exactly in binary floating-point format. This demonstrates the importance of using tolerance-based comparisons for floating-point equality checks.
+This happens because decimal numbers cannot be represented exactly in binary floating-point format. So, using direct comparison '==', the code fails. 
+We can solve this by using a tolerance:
+```c
+fabs(d[i] - expected) < 1e-10
+```
 
 ## Large N values (N = 10^8)
 For N = 10^8, the program needs about 2.4 GB of RAM (3 arrays × 10^8 elements × 8 bytes)
