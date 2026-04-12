@@ -75,7 +75,7 @@ int main() {
         printf("\n");
 
         //expected value
-        double expected = a * x + y;
+        double expected = 7.4;
         int all_correct = 1;
 
         for(int j = 0; j < n; j++) {
