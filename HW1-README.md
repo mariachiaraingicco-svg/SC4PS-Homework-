@@ -21,6 +21,8 @@ Move the key to a safe location and set the correct permissions:
 chmod 600 my_key.pem
 ```
 
+The `chmod 600` is required: SSH refuses to use a private key that is readable by other users, so the permissions must be restricted to read/write for the owner only.
+
 ## 3. Launch a Linux Virtual Machine
 
 1. Go to **Project → Compute → Instances**
@@ -41,7 +43,7 @@ After a few seconds the VM will start and you will see its **IP address**.
 
 ## 4. Access the Gate Machine
 
-If you are outside the university network, connect first to the gate server:
+CloudVeneto VMs are not directly reachable from outside the university network. If you are outside the university network, you must first connect to the gate server, which acts as a jump host:
 
 ```bash
 ssh username@gate.cloudveneto.it
@@ -73,12 +75,27 @@ For **AlmaLinux instances**:
 ssh -i ~/private/my_key.pem almalinux@VM_IP
 ```
 
+For **Ubuntu instances**:
+
+```bash
+ssh -i ~/private/my_key.pem ubuntu@VM_IP
+```
+
+This gives a two-hop connection: local machine → gate.cloudveneto.it → internal VM, since the VM's private IP is only reachable from within the gate machine's network.
+
 ## 7. Install the C Compiler
 
 On AlmaLinux install GCC:
 
 ```bash
 sudo dnf install gcc
+```
+
+On Ubuntu:
+
+```bash
+sudo apt update
+sudo apt install gcc
 ```
 
 Check the installation:
@@ -103,4 +120,25 @@ Example code:
 
 int main() {
     printf("Hello, CloudVeneto!\n");
-    return 0;}
+    return 0;
+}
+```
+
+Save and exit nano with `CTRL+O`, `Enter`, `CTRL+X`.
+
+Compile and run:
+
+```bash
+gcc hello.c -o hello
+./hello
+```
+
+Expected output:
+
+```
+Hello, CloudVeneto!
+```
+
+## Notes
+
+- Resources on CloudVeneto are tied to project allocations with a defined lifetime: always back up any code or data produced on the VM to a local machine or a Git repository before the project's end date.
