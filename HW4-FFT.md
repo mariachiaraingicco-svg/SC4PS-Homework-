@@ -4,7 +4,7 @@ Reference project: https://github.com/alexninogh/myfft_tutorial
 
 ---
 
-## Part 1: Before running
+## Part 1
 
 **1. What an FFT tells you about a signal.** It estimates how strongly each frequency is present in a sampled signal: it decomposes a time series x(t), known at N discrete sample points, into the sinusoidal components (amplitude per frequency) that make it up.
 
@@ -17,7 +17,7 @@ Reference project: https://github.com/alexninogh/myfft_tutorial
 
 ---
 
-## Part 2: Build and run
+## Part 2
 
 **1. CSV files created in `output/`** (8 files):
 - `good_sampling_signal.csv`, `good_sampling_spectrum.csv`
@@ -33,7 +33,7 @@ Reference project: https://github.com/alexninogh/myfft_tutorial
 
 ---
 
-## Part 3: Sampling and aliasing
+## Part 3
 
 Focus on `src/sampling_demo.c`, undersampled case (f_s = 128 Hz, N = 128, same 50+120 Hz signal).
 
@@ -49,7 +49,7 @@ Focus on `src/sampling_demo.c`, undersampled case (f_s = 128 Hz, N = 128, same 5
 
 ---
 
-## Part 4: Frequency resolution
+## Part 4
 
 Focus on the `short_record` case: signal `sin(2π·50·t) + 0.85·sin(2π·55·t)`, with **N = 64, f_s = 512 Hz**.
 
@@ -72,7 +72,7 @@ Focus on the `short_record` case: signal `sin(2π·50·t) + 0.85·sin(2π·55·t
 
 ---
 
-## Part 5: Coupled oscillators
+## Part 5
 
 Focus on `src/coupled_oscillators_fft.c`. Parameters in the code: m = 1.0 kg, wall spring k = 25.0 N/m, coupling spring k_c = 7.0 N/m. Initial condition: x1(0) = 0.10, x2(0) = 0, both velocities 0.
 
@@ -119,7 +119,7 @@ m·x2'' =  k_c·x1 - (k + k_c)·x2
 
 ---
 
-## Part 7: Small code modification (worked example: Option A)
+## Part 7 (Option A)
 
 **Option A — change the sampling rate of the undersampled case.** Suppose we change its f_s from 128 Hz to 200 Hz (keeping N = 128), still sampling the 50+120 Hz signal.
 
@@ -157,9 +157,7 @@ Verified: with the clamp the project still builds and the default output is unch
 
 ---
 
-## Part 8: Reflection
-
-*(personalize — example)*
+## Part 8
 
 One thing I learned about FFTs is how sharply the time/frequency-resolution trade-off bites in practice: a perfectly sampled but short record (the 50/55 Hz case) simply cannot separate close frequencies, and no amount of post-processing fixes it — only acquiring more time does.
 
