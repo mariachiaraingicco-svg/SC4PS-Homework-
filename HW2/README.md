@@ -49,6 +49,8 @@ int main(int argc, char *argv[]) {
     double a = atof(argv[1]);
     double x = atof(argv[2]);
     double y = atof(argv[3]);
+    
+    double expected = a * x + y;
  
     long N[] = {10, 1000000, 100000000};
     int num_tests = 3;
